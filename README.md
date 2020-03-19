@@ -12,5 +12,5 @@ custom templates for [gotests](https://github.com/cweill/gotests)
   
   custom: 
   ```
-    t.Errorf("`StructName`.`MethodName` got:%#v, want %#v", got, tt.want)
+    t.Errorf("`StructName`.`MethodName` got: %#v, want: %#v", got, tt.want)
   ```
