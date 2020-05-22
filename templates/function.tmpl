@@ -74,9 +74,9 @@ func {{.TestName}}(t *testing.T) {
 				{{- else if .IsBasicType}}
 					if {{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}}; {{end}} {{Got .}} != tt.{{Want .}} {
 				{{- else}}
-					if {{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}}; {{end}} !cmp.Equal({{Got .}}, tt.{{Want .}}) {
+					if {{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}}; {{end}} diff := cmp.Diff( tt.{{Want .}}, {{Got .}}); diff != "" {
 				{{- end}}
-				t.Errorf("{{template "message" $f}} {{if $f.ReturnsMultiple}}{{Got .}} {{end}}got: %#v, want: %#v", {{template "inputs" $f}} {{Got .}}, tt.{{Want .}})
+				t.Errorf("{{template "message" $f}} {{if $f.ReturnsMultiple}}{{Got .}} {{end}}mismatch (-want +got) = \n%s", {{template "inputs" $f}} diff)
 				}
 			{{- end}}
 		{{- if .Subtests }} }) {{- end -}}
