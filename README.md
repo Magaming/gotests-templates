@@ -7,11 +7,11 @@ custom templates for [gotests](https://github.com/cweill/gotests)
 
 example
 ```
-  default:
-    t.Errorf("`StructName`.`MethodName` = %v, want %v", got, tt.want)
-  
-  custom: 
-    t.Errorf("`StructName`.`MethodName` got: %#v, want: %#v", got, tt.want)
+default:
+  t.Errorf("`StructName`.`MethodName` = %v, want %v", got, tt.want)
+
+custom: 
+  t.Errorf("`StructName`.`MethodName` got: %#v, want: %#v", got, tt.want)
 ```
 
 ## Usage in Visual Studio Code
